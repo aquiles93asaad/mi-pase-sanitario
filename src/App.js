@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import './App.css';
+import Cerificado from './certificado';
+// wcUCTlUo11yw1TKLF478DL3X6XxY5s1r
+import MisDocumentos from './misDocumentos';
+import ResultadoQr from './resultadoQr';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route
+          path="/billetera"
+          element={<MisDocumentos />}
+        />
+        <Route
+          path="/billetera/cerificado-vacunacion-covid"
+          element={<Cerificado />}
+        />
+        <Route
+          path="/carnetCovid/v2/miArgentina/covid/carnet/validar/img"
+          element={<ResultadoQr />}
+        />
+        <Route path="/" element={<Navigate replace to="/billetera" />} />
+      </Routes>
+    </Router>
   );
 }
 
